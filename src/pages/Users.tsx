@@ -2,8 +2,10 @@ import type { Component } from 'solid-js';
 import { For, onMount } from 'solid-js';
 import Store from '../store';
 import styles from '../App.module.css';
+import { useGlobalContext } from '../GlobalContext/store';
 
 const Users: Component = () =>  {
+    const { pageName } = useGlobalContext();
     const [store, setStore] = Store;
 
     onMount(() => {
@@ -14,7 +16,8 @@ const Users: Component = () =>  {
 
     return (
         <div class={styles.padding}>
-            <h1>List of users:</h1>
+            <h1>The previous page name was: {pageName}</h1>
+            <p>List of users:</p>
             <For each={store.users}>
                 {(user, i) => <p class={styles.paddingLeft}>{i() + 1}: {user}</p>}
             </For>

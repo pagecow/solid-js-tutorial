@@ -7,6 +7,7 @@ app.use(express.static("express"));
 
 app.use( express.static( `${__dirname}/../dist` ) );
 
+// listener
 const server = http.createServer(app);
 const port = 4040;
 server.listen(port);
